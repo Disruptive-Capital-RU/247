@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ClerkProvider } from "@clerk/clerk-react";
+import { Analytics } from '@vercel/analytics/react';
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -12,6 +13,7 @@ root.render(
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
     >
       <App />
+      <Analytics />
     </ClerkProvider>
   </React.StrictMode>
 );
