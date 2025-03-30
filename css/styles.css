@@ -1,0 +1,1772 @@
+/* Apple-inspired CSS for Moscow Elite Concierge */
+
+:root {
+  --primary-color: #000;
+  --secondary-color: #86868b;
+  --accent-color: #0071e3;
+  --background-color: #fff;
+  --light-gray: #f5f5f7;
+  --border-color: #d2d2d7;
+  --success-color: #68cc45;
+  --font-primary: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "Helvetica Neue", Arial, sans-serif;
+  --text-color: #1d1d1f;
+  --font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    "SF Pro Text", "SF Pro Icons", "Helvetica", "Arial", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: 44px; /* Height of the header */
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+  transition: opacity 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Header and Navigation Styles - Apple-style */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 22px;
+  height: 44px;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  align-items: center;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-button {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.auth-button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.auth-button.signup {
+  background-color: #fff;
+  color: #000;
+}
+
+.auth-button.signup:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.nav-links > li {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #f5f5f7;
+  opacity: 0.8;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0 10px;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+  letter-spacing: -0.01em;
+  line-height: 44px;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+.nav-links a.active {
+  opacity: 1;
+  color: #fff;
+}
+
+/* Dropdown styles */
+.dropdown-trigger {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: fixed;
+  top: 44px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.3s ease,
+    visibility 0s 0.3s,
+    transform 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  z-index: 1001;
+  padding: 35px 0 25px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.dropdown-trigger:hover .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.3s ease,
+    visibility 0s,
+    transform 0.3s ease;
+}
+
+.dropdown-container {
+  display: flex;
+  justify-content: center;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 22px;
+  gap: 70px;
+}
+
+.dropdown-column {
+  flex: 1;
+  max-width: 200px;
+}
+
+.dropdown-column h4 {
+  color: #6e6e73;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dropdown-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-column ul li {
+  margin-bottom: 9px;
+}
+
+.dropdown-column ul li a {
+  color: #f5f5f7;
+  font-size: 14px;
+  padding: 0;
+  font-weight: 400;
+  transition: color 0.2s ease;
+  display: inline-block;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  opacity: 1;
+}
+
+.dropdown-column ul li a:hover {
+  color: #2997ff;
+  text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.05)),
+    url("../img/moscow-skyline.jpg");
+  background-size: cover;
+  background-position: center;
+  color: var(--background-color);
+  position: relative;
+  margin-top: 44px; /* Consistent margin for header height */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.hero h1,
+.hero p,
+.hero a {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+
+.tagline {
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+.cta-button {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 980px;
+  font-size: 17px;
+  font-weight: 400;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #0062cc;
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+/* Services Section */
+.services-section {
+  padding: 100px 0;
+  background-color: var(--background-color);
+  text-align: center;
+}
+
+.services-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.services-section h2 {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 50px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+  max-width: 1200px;
+  margin: 50px auto 0;
+}
+
+.service-card {
+  background-color: var(--light-gray);
+  border-radius: 18px;
+  padding: 40px 20px;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+.service-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.service-card p {
+  color: var(--secondary-color);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+/* Service Card Link */
+.service-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--accent-color);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border: 1px solid var(--accent-color);
+  border-radius: 980px;
+  transition: all 0.3s ease;
+}
+
+.service-link:hover {
+  background-color: var(--accent-color);
+  color: white;
+  opacity: 1;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+  width: 100%;
+}
+
+/* About Section */
+.about-section {
+  padding: 100px 0;
+}
+
+.about-section .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.about-content h2 {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 30px;
+}
+
+.about-content p {
+  color: var(--secondary-color);
+  font-size: 17px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.about-image {
+  background: url("../img/moscow-interior.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 18px;
+  height: 500px;
+  width: 100%;
+}
+
+/* Membership Section */
+.membership-section,
+.membership {
+  padding: 100px 0;
+  background-color: var(--light-gray);
+  text-align: center;
+}
+
+.membership-section h2,
+.membership h2 {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 50px;
+}
+
+.membership-cards,
+.membership-options {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.membership-card {
+  background-color: white;
+  border-radius: 18px;
+  padding: 40px;
+  width: 300px;
+  text-align: left;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.membership-card:hover {
+  transform: translateY(-10px);
+}
+
+.membership-card.featured {
+  border: 2px solid var(--accent-color);
+  transform: scale(1.05);
+}
+
+.membership-card.featured:hover {
+  transform: scale(1.07);
+}
+
+.membership-card h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.price {
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  color: var(--accent-color);
+}
+
+.price span {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--secondary-color);
+}
+
+.membership-card ul {
+  margin-bottom: 30px;
+}
+
+.membership-card li {
+  margin-bottom: 15px;
+  font-size: 17px;
+  position: relative;
+  padding-left: 28px;
+}
+
+.membership-card li::before {
+  content: "✓";
+  color: var(--success-color);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Make sure all buttons use consistent styling */
+.btn,
+.cta-button,
+.membership-button,
+.submit-button {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 980px;
+  font-size: 17px;
+  font-weight: 400;
+  display: inline-block;
+  transition: all 0.3s ease;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover,
+.cta-button:hover,
+.membership-button:hover,
+.submit-button:hover {
+  background-color: #0062cc;
+  opacity: 1;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 50px;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  font-family: var(--font-family);
+  font-size: 16px;
+  appearance: none;
+  background-color: var(--background-color);
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
+}
+
+.contact-form select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+.submit-button {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 980px;
+  font-size: 17px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+.submit-button:hover {
+  background-color: #0062cc;
+  transform: scale(1.03);
+}
+
+/* Footer */
+footer {
+  background-color: var(--light-gray);
+  padding: 80px 0 20px;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.footer-column h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.footer-column h4 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+}
+
+.footer-column p {
+  margin-bottom: 10px;
+  color: var(--secondary-color);
+  font-size: 14px;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-links a {
+  color: var(--text-color);
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent-color);
+}
+
+.copyright {
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: 12px;
+}
+
+/* Interactive Enhancements */
+.animated-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.animated-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .tagline {
+    font-size: 22px;
+  }
+
+  .about-section {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image {
+    height: 400px;
+    order: -1;
+  }
+
+  .membership-options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .membership-card {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .membership-card.featured {
+    transform: scale(1);
+  }
+
+  .membership-card.featured:hover {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .tagline {
+    font-size: 18px;
+  }
+
+  .services-section h2,
+  .about-content h2,
+  .membership h2,
+  .contact-section h2 {
+    font-size: 38px;
+  }
+
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-columns {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .social-links {
+    flex-direction: row;
+    gap: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 0 20px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .services-section h2,
+  .about-content h2,
+  .membership h2,
+  .contact-section h2 {
+    font-size: 32px;
+  }
+}
+
+/* Services Page Styles */
+.services-hero {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.05)),
+    url("../img/moscow-skyline.jpg");
+  background-size: cover;
+  background-position: center;
+  color: var(--background-color);
+  position: relative;
+  margin-top: 44px;
+}
+
+.services-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.services-hero h1,
+.services-hero p {
+  position: relative;
+  z-index: 2;
+}
+
+.services-hero h1 {
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+
+.services-grid-detailed {
+  padding: 100px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-category {
+  margin-bottom: 80px;
+}
+
+.service-category h2 {
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+}
+
+.service-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.service-item {
+  background-color: var(--light-gray);
+  border-radius: 18px;
+  padding: 40px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-item .service-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.service-item h3 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.service-item p {
+  color: var(--secondary-color);
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.service-features {
+  list-style: none;
+  padding: 0;
+}
+
+.service-features li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: var(--secondary-color);
+}
+
+.service-features li::before {
+  content: "✓";
+  color: var(--success-color);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.cta-section {
+  text-align: center;
+  padding: 100px 5%;
+  background-color: var(--light-gray);
+}
+
+.cta-section h2 {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  font-size: 24px;
+  color: var(--secondary-color);
+  margin-bottom: 40px;
+}
+
+/* Responsive Design for Services Page */
+@media (max-width: 768px) {
+  .services-hero h1 {
+    font-size: 38px;
+  }
+
+  .services-hero .tagline {
+    font-size: 18px;
+  }
+
+  .service-category h2 {
+    font-size: 32px;
+  }
+
+  .service-items {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-section h2 {
+    font-size: 38px;
+  }
+
+  .cta-section p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-hero h1 {
+    font-size: 32px;
+  }
+
+  .service-category h2 {
+    font-size: 28px;
+  }
+
+  .service-item {
+    padding: 30px;
+  }
+
+  .cta-section h2 {
+    font-size: 32px;
+  }
+}
+
+/* Event Page Styles */
+.events-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url("../img/events-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 12rem 0 8rem;
+  text-align: center;
+}
+
+.events-hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.events-hero p {
+  font-size: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+.events-intro {
+  padding: 5rem 0;
+  text-align: center;
+  background-color: #fff;
+}
+
+.events-intro h2 {
+  color: #b8860b;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+.events-intro h2:after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: #b8860b;
+  margin: 1rem auto 0;
+}
+
+.events-intro p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.events-highlights {
+  padding: 5rem 0;
+  background-color: #f9f7f2;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.highlight-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.highlight-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.highlight-card h3 {
+  font-size: 1.5rem;
+  color: #b8860b;
+  margin: 1.5rem 1.5rem 1rem;
+}
+
+.highlight-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin: 0 1.5rem 1.5rem;
+}
+
+.events-services {
+  padding: 5rem 0;
+  background-color: #fff;
+}
+
+.events-services h2 {
+  text-align: center;
+  color: #b8860b;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.events-services h2:after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: #b8860b;
+  margin: 1rem auto 0;
+}
+
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.events-service-item {
+  padding: 2rem;
+  background: #f9f7f2;
+  border-radius: 8px;
+  border-left: 3px solid #b8860b;
+  transition: transform 0.3s ease;
+}
+
+.events-service-item:hover {
+  transform: translateY(-5px);
+}
+
+.events-service-item h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.events-service-item p {
+  color: #555;
+  line-height: 1.6;
+}
+
+.events-testimonials {
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("../img/testimonial-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 0;
+  color: white;
+  text-align: center;
+}
+
+.events-testimonials h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.testimonial p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+}
+
+.testimonial h4 {
+  font-size: 1rem;
+  color: #b8860b;
+}
+
+.events-request {
+  padding: 5rem 0;
+  background-color: #f9f7f2;
+  text-align: center;
+}
+
+.events-request h2 {
+  color: #b8860b;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.events-request p {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.request-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.request-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.request-form input,
+.request-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.request-form textarea {
+  min-height: 120px;
+}
+
+.request-form .btn {
+  background-color: #b8860b;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.request-form .btn:hover {
+  background-color: #a67908;
+}
+
+/* Media Queries for Events Page */
+@media (max-width: 768px) {
+  .events-hero {
+    padding: 8rem 0 5rem;
+  }
+
+  .events-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .events-hero p {
+    font-size: 1.2rem;
+  }
+
+  .events-intro h2,
+  .events-services h2,
+  .events-testimonials h2,
+  .events-request h2 {
+    font-size: 2rem;
+  }
+
+  .highlight-grid,
+  .services-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .events-hero h1 {
+    font-size: 2rem;
+  }
+
+  .events-hero p {
+    font-size: 1rem;
+  }
+
+  .events-intro h2,
+  .events-services h2,
+  .events-testimonials h2,
+  .events-request h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Wellness Page Styles */
+.wellness-hero {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.05)),
+    url("../img/wellness-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  margin-top: 44px;
+}
+
+.wellness-intro {
+  padding: 100px 0 70px;
+  text-align: center;
+}
+
+.wellness-intro h2 {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 30px;
+}
+
+.wellness-intro p {
+  font-size: 20px;
+  color: var(--secondary-color);
+  max-width: 800px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+.wellness-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.wellness-highlight {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  padding: 30px;
+  background-color: #fdf2f6; /* Soft pink background */
+  border-radius: 18px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.wellness-highlight:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.highlight-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.wellness-highlight h3 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #d4267d; /* Elegant pink accent */
+}
+
+.wellness-highlight p {
+  font-size: 16px;
+  margin: 0;
+  color: var(--secondary-color);
+}
+
+.services-categories {
+  padding: 30px 0 80px;
+}
+
+.service-category {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  margin-bottom: 100px;
+  padding: 0 20px;
+}
+
+.category-content {
+  padding: 40px;
+}
+
+.category-content h2 {
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.category-content p {
+  color: var(--secondary-color);
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.category-image {
+  border-radius: 18px;
+  height: 500px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.beauty-image {
+  background-image: url("../img/beauty-services.jpg");
+}
+
+.spa-image {
+  background-image: url("../img/spa-services.jpg");
+}
+
+.concierge-image {
+  background-image: url("../img/beauty-concierge.jpg");
+}
+
+.beauty-services,
+.spa-services,
+.concierge-services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+}
+
+.beauty-service,
+.spa-service,
+.concierge-service {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.beauty-service:hover,
+.spa-service:hover,
+.concierge-service:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.beauty-service h3,
+.spa-service h3,
+.concierge-service h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #d4267d; /* Consistent pink accent */
+}
+
+.beauty-service p,
+.spa-service p,
+.concierge-service p {
+  font-size: 15px;
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.service-price {
+  font-weight: 600;
+  color: var(--primary-color) !important;
+  font-size: 16px !important;
+  margin-top: auto;
+}
+
+.wellness-testimonials {
+  padding: 100px 0;
+  background-color: #fdf2f6; /* Soft pink background */
+}
+
+.wellness-request {
+  padding: 100px 0;
+  background-color: white;
+}
+
+.beauty-membership {
+  padding: 100px 0;
+  text-align: center;
+  background-color: #fdf2f6; /* Soft pink background */
+}
+
+.beauty-membership h2 {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+
+.beauty-membership p {
+  font-size: 20px;
+  color: var(--secondary-color);
+  margin: 0 auto 40px;
+  max-width: 800px;
+}
+
+.beauty-perks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.beauty-perk {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: white;
+  padding: 15px 25px;
+  border-radius: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.perk-icon {
+  font-size: 22px;
+  color: #d4267d; /* Pink accent */
+}
+
+.beauty-perk p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+/* Responsive Design for Wellness Page */
+@media (max-width: 1024px) {
+  .service-category {
+    grid-template-columns: 1fr;
+  }
+
+  .category-image {
+    height: 400px;
+    order: -1;
+  }
+
+  .beauty-services,
+  .spa-services,
+  .concierge-services {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .wellness-intro h2,
+  .beauty-membership h2 {
+    font-size: 36px;
+  }
+
+  .wellness-intro p {
+    font-size: 18px;
+  }
+
+  .category-content {
+    padding: 20px 0;
+  }
+
+  .category-content h2 {
+    font-size: 32px;
+  }
+
+  .category-content p {
+    font-size: 16px;
+  }
+
+  .beauty-services,
+  .spa-services,
+  .concierge-services {
+    grid-template-columns: 1fr;
+  }
+
+  .beauty-perk {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .wellness-highlight {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .category-image {
+    height: 300px;
+  }
+
+  .beauty-service,
+  .spa-service,
+  .concierge-service {
+    padding: 20px;
+  }
+}
+
+/* Medical Page Styles */
+.medical-hero {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.05)),
+    url("../img/medical-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  margin-top: 44px;
+}
+
+.medical-intro {
+  padding: 100px 0 70px;
+  text-align: center;
+}
+
+.medical-intro h2 {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 30px;
+}
+
+.medical-intro p {
+  font-size: 20px;
+  color: var(--secondary-color);
+  max-width: 800px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+.medical-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.medical-highlight {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  padding: 30px;
+  background-color: #f0f8ff; /* Light blue background */
+  border-radius: 18px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.medical-highlight:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.medical-highlight h3 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #006bb3; /* Medical blue accent */
+}
+
+.medical-highlight p {
+  font-size: 16px;
+  margin: 0;
+  color: var(--secondary-color);
+}
+
+.medical-services {
+  padding: 30px 0 80px;
+}
+
+.medical-category {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  margin-bottom: 100px;
+  padding: 0 20px;
+}
+
+.medical-services-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+}
+
+.medical-services-list li {
+  background-color: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.medical-services-list li:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.medical-services-list h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #006bb3; /* Medical blue accent */
+}
+
+.medical-services-list p {
+  font-size: 15px;
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.doctor-image {
+  background-image: url("../img/doctor.jpg");
+}
+
+.hospital-image {
+  background-image: url("../img/hospital.jpg");
+}
+
+.emergency-image {
+  background-image: url("../img/emergency.jpg");
+}
+
+.concierge-medical-image {
+  background-image: url("../img/concierge-medical.jpg");
+}
+
+.medical-testimonials {
+  padding: 100px 0;
+  background-color: #f0f8ff; /* Light blue background */
+}
+
+.medical-request {
+  padding: 100px 0;
+  background-color: white;
+}
+
+.medical-membership {
+  padding: 100px 0;
+  text-align: center;
+  background-color: #f0f8ff; /* Light blue background */
+}
+
+.medical-membership h2 {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+
+.medical-membership p {
+  font-size: 20px;
+  color: var(--secondary-color);
+  margin: 0 auto 40px;
+  max-width: 800px;
+}
+
+/* Responsive Design for Medical Page */
+@media (max-width: 1024px) {
+  .medical-category {
+    grid-template-columns: 1fr;
+  }
+
+  .category-image {
+    height: 400px;
+    order: -1;
+  }
+
+  .medical-services-list {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .medical-intro h2,
+  .medical-membership h2 {
+    font-size: 36px;
+  }
+
+  .medical-intro p {
+    font-size: 18px;
+  }
+
+  .category-content {
+    padding: 20px 0;
+  }
+
+  .category-content h2 {
+    font-size: 32px;
+  }
+
+  .category-content p {
+    font-size: 16px;
+  }
+
+  .medical-services-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .medical-highlight {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .category-image {
+    height: 300px;
+  }
+
+  .medical-services-list li {
+    padding: 20px;
+  }
+}
