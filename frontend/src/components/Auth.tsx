@@ -18,6 +18,8 @@ export function Auth() {
     const action = urlParams.get("action");
     if (action === "signup") {
       setIsSignUp(true);
+    } else if (action === "signin") {
+      setIsSignUp(false);
     }
   }, []);
 
