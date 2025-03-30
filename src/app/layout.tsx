@@ -6,6 +6,11 @@ import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const metadata = {
+  title: "247 Concierge",
+  description: "Premium concierge services for discerning clients",
+};
+
 export default function RootLayout({
   children,
 }: {
