@@ -1,44 +1,97 @@
-# Moscow Elite Concierge
+# 247 Concierge
 
-An Apple-inspired website for a premium concierge service in Moscow. This website showcases luxury services with a clean, minimalist design aesthetic.
+A premium concierge service platform built with Next.js, offering luxury services to discerning clients.
 
-## Features
+## Project Overview
 
-- Responsive design optimized for all device sizes
-- Apple-inspired UI with clean typography and animations
-- Service showcase with elegant cards
-- Membership tiers presentation
-- Contact form for inquiries
-- Smooth scrolling navigation
+This application provides a range of exclusive concierge services including:
 
-## Technologies Used
+- Luxury Travel Arrangements
+- Personal Shopping
+- Wellness Services
+- Medical Concierge
+- Event Management
 
-- HTML5
-- CSS3 with modern features (Grid, Flexbox, CSS Variables)
-- Vanilla JavaScript with modern ES6+ features
-- Responsive design with media queries
-- SF Pro Display font (Apple's system font)
+## Tech Stack
+
+- **Frontend**: Next.js, React, TypeScript, TailwindCSS
+- **Authentication**: Clerk
+- **Backend**: Next.js API Routes
+- **Database**: Convex (prepared for integration)
+
+## Project Structure
+
+```
+247/
+├── public/             # Static assets
+│   ├── img/            # Images
+│   └── assets/         # Other static assets
+├── src/                # Source code
+│   ├── app/            # Next.js App Router
+│   │   ├── api/        # API Routes
+│   │   ├── (routes)/   # Page Routes
+│   │   ├── globals.css # Global styles
+│   │   └── layout.tsx  # Root layout
+│   ├── components/     # Reusable components
+│   ├── lib/            # Utility libraries
+│   ├── styles/         # CSS modules and styles
+│   ├── types/          # TypeScript type definitions
+│   └── utils/          # Utility functions
+├── convex/             # Convex database configuration
+├── .env.local          # Environment variables
+├── next.config.js      # Next.js configuration
+├── package.json        # Dependencies
+├── postcss.config.js   # PostCSS configuration
+├── tailwind.config.js  # Tailwind CSS configuration
+└── tsconfig.json       # TypeScript configuration
+```
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js 16+ and npm/yarn
+
+### Installation
+
 1. Clone the repository
-2. Open `index.html` in your web browser
 
-## Missing Images
+```bash
+git clone https://github.com/yourusername/247.git
+cd 247
+```
 
-The website references image files in the `assets` folder:
+2. Install dependencies
 
-- `assets/moscow-skyline.jpg` - For the hero section background
-- `assets/moscow-interior.jpg` - For the about section
+```bash
+npm install
+# or
+yarn
+```
 
-You'll need to add appropriate images to these locations for the website to display properly.
+3. Set up environment variables by copying `.env.example` to `.env.local` and filling in the values
 
-## Customization
+4. Start the development server
 
-- Colors can be easily adjusted through CSS variables at the top of the `css/styles.css` file
-- Content can be modified in the `index.html` file
-- Animations and interactions can be customized in the `js/script.js` file
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Features
+
+- **Responsive Design**: Works on desktop and mobile devices
+- **Authentication**: Secure sign-in and sign-up with Clerk
+- **Service Booking**: Book appointments for various services
+- **Admin Dashboard**: Manage services and appointments (protected route)
 
 ## License
 
-This project is available for your use and modification.
+This project is proprietary and confidential.
+
+## Contact
+
+For inquiries, please contact info@247concierge.com
